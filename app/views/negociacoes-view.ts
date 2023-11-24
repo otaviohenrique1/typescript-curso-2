@@ -21,7 +21,7 @@ export class NegociacoesView {
           ${model.lista().map((negociacao) => {
             return `
               <tr>
-                <td>?</td>
+                <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
                 <td>${negociacao.quantidade}</td>
                 <td>${negociacao.valor}</td>
               </tr>
@@ -33,6 +33,7 @@ export class NegociacoesView {
   }
 
   update(model: Negociacoes): void {
-    this.elemento.innerHTML = this.template(model);
+    const template = this.template(model);
+    this.elemento.innerHTML = template;
   }
 }

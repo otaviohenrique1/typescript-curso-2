@@ -13,6 +13,7 @@ export class NegociacaoController {
     adiciona() {
         const negociacao = this.criaNegociacao();
         this.negociacoes.adiciona(negociacao);
+        this.negociacoesView.update(this.negociacoes); // Mostra a tabela na tela
         this.limparFormulario();
     }
     criaNegociacao() {
