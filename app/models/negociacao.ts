@@ -13,7 +13,34 @@ export class Negociacao {
   get volume(): number {
     return this.quantidade * this.valor;
   }
+
+  public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
+    const exp = /-/g;
+    const date = new Date(dataString.replace(exp, ","));
+    const quantidade = parseInt(quantidadeString);
+    const valor = parseFloat(valorString);
+    return new Negociacao(date, quantidade, valor);
+  }
 }
+
+/*
+export class Negociacao {
+  constructor(
+    private _data: Date,
+    public readonly quantidade: number,
+    public readonly valor: number
+  ) {}
+
+  get data(): Date {
+    const date = new Date(this._data.getTime());
+    return date;
+  }
+
+  get volume(): number {
+    return this.quantidade * this.valor;
+  }
+}
+*/
 
 /*
 export class Negociacao {

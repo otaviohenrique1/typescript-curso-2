@@ -1,7 +1,9 @@
-export class NegociacoesView {
-    constructor(selector) {
-        this.elemento = document.querySelector(selector);
-    }
+import { View } from "./view.js";
+export class NegociacoesView extends View {
+    // private elemento: HTMLElement;
+    // constructor(seletor: string) {
+    //   this.elemento = document.querySelector(seletor);
+    // }
     template(model) {
         return `
       <table class="table table-hover table-bordered">
@@ -16,7 +18,7 @@ export class NegociacoesView {
           ${model.lista().map((negociacao) => {
             return `
               <tr>
-                <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                <td>${this.formatar(negociacao.data)}</td>
                 <td>${negociacao.quantidade}</td>
                 <td>${negociacao.valor}</td>
               </tr>
@@ -26,8 +28,7 @@ export class NegociacoesView {
       </table>
     `;
     }
-    update(model) {
-        const template = this.template(model);
-        this.elemento.innerHTML = template;
+    formatar(data) {
+        return new Intl.DateTimeFormat().format(data);
     }
 }
