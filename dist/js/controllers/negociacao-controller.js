@@ -8,7 +8,7 @@ export class NegociacaoController {
     // private readonly DOMINGO = 6;
     constructor() {
         this.negociacoes = new Negociacoes();
-        this.negociacoesView = new NegociacoesView("#negociacoesView");
+        this.negociacoesView = new NegociacoesView("#negociacoesView", true);
         this.mensagemView = new MensagemView("#mensagemView");
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
@@ -29,7 +29,8 @@ export class NegociacaoController {
         this.atualizaView();
     }
     ehDiaUtil(data) {
-        return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
+        return data.getDay() > DiasDaSemana.DOMINGO
+            && data.getDay() < DiasDaSemana.SABADO;
     }
     // private criaNegociacao(): Negociacao {
     //   const exp = /-/g;

@@ -9,7 +9,7 @@ export class NegociacaoController {
   private inputQuantidade: HTMLInputElement;
   private inputValor: HTMLInputElement;
   private negociacoes = new Negociacoes();
-  private negociacoesView = new NegociacoesView("#negociacoesView");
+  private negociacoesView = new NegociacoesView("#negociacoesView", true);
   private mensagemView = new MensagemView("#mensagemView");
   // private readonly SABADO = 0;
   // private readonly DOMINGO = 6;
@@ -40,7 +40,8 @@ export class NegociacaoController {
   }
 
   private ehDiaUtil(data: Date) {
-    return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
+    return data.getDay() > DiasDaSemana.DOMINGO
+      && data.getDay() < DiasDaSemana.SABADO;
   }
   
   // private criaNegociacao(): Negociacao {
